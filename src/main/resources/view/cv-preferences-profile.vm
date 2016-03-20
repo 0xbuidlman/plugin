@@ -1,0 +1,24 @@
+<div class="mod-header">
+    <ul class="ops">
+        <li><a id="edit_prefs_lnk" class="icon icon-edit-sml" href="/jira/plugins/servlet/user-cv?username=${urlcodec.encode($user.name)}" title="$i18n.getText('preferences.cv.label.words.edit.cv')"><span>$i18n.getText('preferences.cv.label.words.edit.cv')</span></a></li>
+    </ul>
+    <h3>$i18n.getText('preferences.cv.label.words.cv')</h3>
+</div>
+<div class="mod-content">
+    <ul class="item-details">
+        <li>
+            <dl title="$i18n.getText('preferences.cv.label.num.project')">
+                <dt>$i18n.getText('preferences.cv.label.num.project'):</dt>
+                <dd>
+                    <span id="up-p-pagesize">TODO</span>
+                </dd>
+            </dl>
+            <dl title="$i18n.getText('preferences.cv.label.num.project')">
+                <dt>$i18n.getText('preferences.cv.label.num.project'):</dt>
+                <dd>
+                    <span id="up-p-pagesize">TODO</span>
+                </dd>
+            </dl>
+        </li>
+    </ul>
+</div>

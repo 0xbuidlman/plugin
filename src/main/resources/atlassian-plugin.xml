@@ -1,0 +1,77 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+    
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="people-management-extensions-plugin"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="people-management-extensions-plugin-resources" name="people-management-extensions-plugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="people-management-extensions-plugin.css" location="/css/people-management-extensions-plugin.css"/>
+        <resource type="download" name="people-management-extensions-plugin.js" location="/js/people-management-extensions-plugin.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>people-management-extensions-plugin</context>
+    </web-resource>
+    
+    <web-section key="pmx_section" name="People Managament Main Section" location="pmx_links_link" weight="10"/>
+    
+    <web-item key="pmx_links" name="People Management Links Main Section" section="system.top.navigation.bar" weight="47">
+	    <label>People Management</label>
+	    <link linkId="pmx_links_link">http://www.atlassian.com</link>
+	</web-item>
+	
+	<web-item key="catalog_link" name="Catalog Page" section="pmx_links_link/pmx_section" weight="10">
+        <label>Catalog</label>
+        <link linkId="catalog_link">/projects/SKILL/issues/?filter=allopenissues</link>
+    </web-item>
+
+	<web-item key="skillmatrix_link" name="Skill Matrix Page" section="pmx_links_link/pmx_section" weight="10">
+        <label>Skill Matrix</label>
+        <link linkId="skillmatrix_link">http://www.atlassian.com</link>
+    </web-item>
+    
+    <!-- User Menu Section -->
+    <web-section key="pmx_user_dropdown_section" name="People Managament User Dropdown Main Section" location="system.user.options" weight="101"/>
+    
+    <web-item key="pmx_user_cv_link" name="CV Page Link" section="system.user.options/pmx_user_dropdown_section" weight="1">
+        <label>CV</label>
+        <link linkId="pmx_user_cv_link">/plugins/servlet/user-cv</link>
+        <tooltip key="tooltip.cv" />
+    </web-item>
+
+    <web-item key="pmx_my_skills_link" name="My Skills Page Link" section="system.user.options/pmx_user_dropdown_section" weight="2">
+        <label>My Skills</label>
+        <link linkId="pmx_my_skills_link">http://www.atlassian.com</link>
+    </web-item>
+    
+    <web-panel key="cv-user-prefs" location="webpanels.user.profile.summary.custom" weight="150">
+	    <resource name="view" type="velocity" location="view/cv-preferences-profile.vm"/>
+	</web-panel>
+	
+	<servlet name="User CV Servlet" key="cv_user_servlet" class="it.pmx.atlassian.plugins.servlet.UserCVServlet">
+        <description>CV User Servlet.</description>
+        <url-pattern>/user-cv</url-pattern>
+    </servlet>
+    
+    <!-- <gadget key="unique-gadget-key" location="path/to/gadget.xml" publish-location="my-custom-context/custom/location/gadget.xml">
+	    <enabled-conditions>
+	       <condition class="com.atlassian.plugin.awesome.MyEnabledCondition"/>
+	    </enabled-conditions>
+	    <local-conditions>
+	       <conditions type="OR">
+	         <condition class="com.atlassian.plugin.awesome.MyLocalCondition" />
+	         <condition class="com.atlassian.plugin.awesome.MyInvertedLocalCondition" inverted="true" />
+	       </conditions>
+	    </local-conditions>
+	 
+  	</gadget> -->
+    
+</atlassian-plugin>
