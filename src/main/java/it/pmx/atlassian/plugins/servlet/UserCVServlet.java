@@ -16,10 +16,13 @@ import org.slf4j.LoggerFactory;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import com.atlassian.sal.api.auth.LoginUriProvider;
 import com.atlassian.sal.api.user.UserManager;
+import com.atlassian.sal.api.user.UserProfile;
 import com.atlassian.templaterenderer.TemplateRenderer;
 
 @Named("userCVServlet")
 public class UserCVServlet extends HttpServlet {
+
+	private static final String CV_PROFILE_VM_VIEW = "view/cv-profile.vm";
 
 	/**
 	 * 
@@ -44,12 +47,12 @@ public class UserCVServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String username = userManager.getRemoteUsername(req);
-		if (username == null || !userManager.isSystemAdmin(username)) {
+		UserProfile userProfile = userManager.getRemoteUser(req);
+		if (userProfile == null || !userManager.isSystemAdmin(userProfile.getUserKey())) {
 			redirectToLogin(req, resp);
 			return;
 		}
-		templateRenderer.render("test.vm", resp.getWriter());
+		templateRenderer.render(CV_PROFILE_VM_VIEW, resp.getWriter());
 	}
 
 	private void redirectToLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {

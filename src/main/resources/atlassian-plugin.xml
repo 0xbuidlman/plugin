@@ -49,7 +49,7 @@
 
     <web-item key="pmx_my_skills_link" name="My Skills Page Link" section="system.user.options/pmx_user_dropdown_section" weight="2">
         <label>My Skills</label>
-        <link linkId="pmx_my_skills_link">http://www.atlassian.com</link>
+        <link linkId="pmx_my_skills_link">/plugins/servlet/user-my-skills</link>
     </web-item>
     
     <web-panel key="cv-user-prefs" location="webpanels.user.profile.summary.custom" weight="150">
@@ -60,18 +60,10 @@
         <description>CV User Servlet.</description>
         <url-pattern>/user-cv</url-pattern>
     </servlet>
-    
-    <!-- <gadget key="unique-gadget-key" location="path/to/gadget.xml" publish-location="my-custom-context/custom/location/gadget.xml">
-	    <enabled-conditions>
-	       <condition class="com.atlassian.plugin.awesome.MyEnabledCondition"/>
-	    </enabled-conditions>
-	    <local-conditions>
-	       <conditions type="OR">
-	         <condition class="com.atlassian.plugin.awesome.MyLocalCondition" />
-	         <condition class="com.atlassian.plugin.awesome.MyInvertedLocalCondition" inverted="true" />
-	       </conditions>
-	    </local-conditions>
-	 
-  	</gadget> -->
+
+	<servlet name="User My Skills Servlet" key="my_skills_user_servlet" class="it.pmx.atlassian.plugins.servlet.UserMySkillsServlet">
+        <description>My Skills User Servlet.</description>
+        <url-pattern>/user-my-skills</url-pattern>
+    </servlet>
     
 </atlassian-plugin>

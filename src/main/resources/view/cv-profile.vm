@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>TEST Velocity</title>
+     <meta name="decorator" content="atl.general">
+  </head>
+	  <body>
+	    <form id="cv_profile_form">
+			<div>
+	    		<ul class="item-details">
+					<li>
+					    <dl title="$i18n.getText('preferences.cv.label.num.project')">
+							<dt>$i18n.getText('preferences.cv.label.num.project'):</dt>
+							<dd>
+					   	 		<span id="up-p-pagesize">TODO</span>
+						    </dd>
+						</dl>
+						<dl title="$i18n.getText('preferences.cv.label.num.project')">
+							<dt>$i18n.getText('preferences.cv.label.num.project'):</dt>
+							<dd>
+						    	<span id="up-p-pagesize">TODO</span>
+					       	</dd>
+					    </dl>
+					</li>
+				</ul>
+			</div>
+		</form>
+	</body>
+</html>
