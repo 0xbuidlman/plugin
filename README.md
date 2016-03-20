@@ -1,1 +1,1 @@
-# plugin
+# PMX Atlassian Plugin
