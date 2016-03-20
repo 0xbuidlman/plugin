@@ -1,0 +1,36 @@
+<html>
+	<head>
+    	<title>$i18n.getText('preferences.myskills.label.title')</title>
+    	<meta name="decorator" content="atl.general">
+	</head>
+  	<body>
+	  	<div class="aui-page-header">
+			<div class="aui-page-header-inner">
+				<div class="aui-page-header-main">
+					<h1>$i18n.getText('preferences.myskills.label.title')</h1>
+				</div>
+			<div id="dash-options" class="aui-page-header-actions">
+			</div>
+		</div>
+	    <form id="my_skill_profile_form">
+			<div>
+	    		<ul class="item-details">
+					<li>
+					    <dl title="$i18n.getText('preferences.cv.label.num.project')">
+							<dt>$i18n.getText('preferences.cv.label.num.project'):</dt>
+							<dd>
+					   	 		<span id="up-p-pagesize">TODO</span>
+						    </dd>
+						</dl>
+						<dl title="$i18n.getText('preferences.cv.label.num.project')">
+							<dt>$i18n.getText('preferences.cv.label.num.project'):</dt>
+							<dd>
+						    	<span id="up-p-pagesize">TODO</span>
+					       	</dd>
+					    </dl>
+					</li>
+				</ul>
+			</div>
+		</form>
+	</body>
+</html>
