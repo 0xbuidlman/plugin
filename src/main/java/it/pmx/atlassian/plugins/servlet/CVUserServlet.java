@@ -20,7 +20,7 @@ import com.atlassian.sal.api.user.UserProfile;
 import com.atlassian.templaterenderer.TemplateRenderer;
 
 @Named("userCVServlet")
-public class UserCVServlet extends HttpServlet {
+public class CVUserServlet extends HttpServlet {
 
 	private static final String CV_PROFILE_VM_VIEW = "view/cv-profile.vm";
 
@@ -29,7 +29,7 @@ public class UserCVServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -7389830290380037840L;
 
-	private static final Logger log = LoggerFactory.getLogger(UserCVServlet.class);
+	private static final Logger log = LoggerFactory.getLogger(CVUserServlet.class);
 
 	@ComponentImport
 	private final UserManager userManager;
@@ -39,7 +39,7 @@ public class UserCVServlet extends HttpServlet {
 	private final TemplateRenderer templateRenderer;
 
 	@Inject
-	public UserCVServlet(UserManager userManager, LoginUriProvider loginUriProvider, TemplateRenderer templateRenderer) {
+	public CVUserServlet(UserManager userManager, LoginUriProvider loginUriProvider, TemplateRenderer templateRenderer) {
 		this.userManager = userManager;
 		this.loginUriProvider = loginUriProvider;
 		this.templateRenderer = templateRenderer;

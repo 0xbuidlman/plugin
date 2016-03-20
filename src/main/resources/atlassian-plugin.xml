@@ -47,21 +47,21 @@
         <tooltip key="tooltip.cv" />
     </web-item>
 
-    <web-item key="pmx_my_skills_link" name="My Skills Page Link" section="system.user.options/pmx_user_dropdown_section" weight="2">
+    <web-item key="pmx_user_my_skills_link" name="My Skills Page Link" section="system.user.options/pmx_user_dropdown_section" weight="2">
         <label>My Skills</label>
-        <link linkId="pmx_my_skills_link">/plugins/servlet/user-my-skills</link>
+        <link linkId="pmx_user_my_skills_link">/plugins/servlet/user-my-skills</link>
     </web-item>
     
-    <web-panel key="cv-user-prefs" location="webpanels.user.profile.summary.custom" weight="150">
+    <web-panel key="pmx_user_cv_prefs" location="webpanels.user.profile.summary.custom" weight="150">
 	    <resource name="view" type="velocity" location="view/cv-preferences-profile.vm"/>
 	</web-panel>
 	
-	<servlet name="User CV Servlet" key="cv_user_servlet" class="it.pmx.atlassian.plugins.servlet.UserCVServlet">
+	<servlet name="CV User Servlet" key="cv_user_servlet" class="it.pmx.atlassian.plugins.servlet.CVUserServlet">
         <description>CV User Servlet.</description>
         <url-pattern>/user-cv</url-pattern>
     </servlet>
 
-	<servlet name="User My Skills Servlet" key="my_skills_user_servlet" class="it.pmx.atlassian.plugins.servlet.UserMySkillsServlet">
+	<servlet name="My Skills User Servlet" key="my_skills_user_servlet" class="it.pmx.atlassian.plugins.servlet.MySkillsUserServlet">
         <description>My Skills User Servlet.</description>
         <url-pattern>/user-my-skills</url-pattern>
     </servlet>

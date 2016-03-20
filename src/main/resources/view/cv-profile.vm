@@ -1,9 +1,17 @@
 <html>
-  <head>
-    <title>TEST Velocity</title>
-     <meta name="decorator" content="atl.general">
-  </head>
-	  <body>
+	<head>
+    	<title>$i18n.getText('preferences.cv.label.tiyle')</title>
+    	<meta name="decorator" content="atl.general">
+	</head>
+	<body>
+		<div class="aui-page-header">
+			<div class="aui-page-header-inner">
+				<div class="aui-page-header-main">
+					<h1>$i18n.getText('preferences.cv.label.tiyle')</h1>
+				</div>
+			<div id="dash-options" class="aui-page-header-actions">
+			</div>
+		</div>
 	    <form id="cv_profile_form">
 			<div>
 	    		<ul class="item-details">
