@@ -28,14 +28,56 @@
 	    <link linkId="pmx_links_link">http://www.atlassian.com</link>
 	</web-item>
 	
-	<web-item key="catalog_link" name="Catalog Page" section="pmx_links_link/pmx_section" weight="10">
-        <label key="label.catalog" />
-        <link linkId="catalog_link">/projects/SKILL/issues/?filter=allopenissues</link>
+	<web-item key="skillcatalog_link" name="Catalog Page" section="pmx_links_link/pmx_section" weight="10">
+        <label key="label.skillcatalog" />
+       	<conditions type="OR">
+	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+        </conditions>
+        <link linkId="skillcatalog_link">/projects/SKILL/issues/?filter=allopenissues</link>
     </web-item>
 
 	<web-item key="skillmatrix_link" name="Skill Matrix Page" section="pmx_links_link/pmx_section" weight="10">
         <label key="label.skillmatrix" />
+        <conditions type="OR">
+	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+			<condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+        </conditions>
         <link linkId="skillmatrix_link">http://www.atlassian.com</link>
+    </web-item>
+
+	<web-item key="credentials_link" name="Credential Page" section="pmx_links_link/pmx_section" weight="10">
+        <label key="label.credentials" />
+        <conditions type="OR">
+	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+        	<condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+        </conditions>
+        <link linkId="catalog_link">/projects/SKILL/issues/?filter=allopenissues</link>
+    </web-item>
+
+	<web-item key="cv_link" name="CV Page" section="pmx_links_link/pmx_section" weight="10">
+        <label key="label.cv" />
+        <conditions type="OR">
+	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+			<condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+        </conditions>
+        <link linkId="cv_link">http://www.atlassian.com</link>
     </web-item>
     
     <!-- User Menu Section -->
