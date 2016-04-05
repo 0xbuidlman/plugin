@@ -31,7 +31,7 @@
 			</condition>
 	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
 			    <param name="permission">admin</param>
-			</condition>
+			</condition> 
         </conditions>
 	    <link linkId="pmx_links_link">http://www.atlassian.com</link>
 	</web-item>
