@@ -25,6 +25,14 @@
     
     <web-item key="pmx_links" name="People Management Links Main Section" section="system.top.navigation.bar" weight="47">
 	    <label key="label.people" />
+	    <conditions type="OR">
+	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+			    <param name="permission">admin</param>
+			</condition>
+        </conditions>
 	    <link linkId="pmx_links_link">http://www.atlassian.com</link>
 	</web-item>
 	
