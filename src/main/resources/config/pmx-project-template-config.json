@@ -1,0 +1,27 @@
+{
+	"issue-type-scheme": {
+		"name": "pmx.template.issuetype.scheme.name",
+		"description": "pmx.template.issuetype.scheme.description",
+		"issue-types": [{
+			"key": "skillType",
+			"name": "New Skill",
+			"description": "A new Skill of the company.",
+			"icon": "/images/pmx-template-icon.png",
+			"sub-task": true,
+			"workflow": "wf1"
+		}]
+	},
+    "workflow-scheme":
+    {
+        "name": "my.project.template.workflow.scheme.name",
+        "description": "my.project.template.workflow.scheme.description",
+        "default-workflow": "wf1",
+        "workflows": [
+            {
+                "key": "wf1",
+                "name": "my.project.template.workflow.wf1.name",
+                "workflow-bundle": "/wfb/Issue-Tracking-Workflow.jwb"
+            }
+        ]
+    }
+}
