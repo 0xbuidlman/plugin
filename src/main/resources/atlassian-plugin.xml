@@ -48,7 +48,7 @@
         <description key="pmx.template.description"/>
         <longDescription key="pmx.template.description.long"/>
 
-        <infoPage soy-template="JIRA.Templates.ProjectTemplates.Pmx.renderPmxTemplateExplanation" />
+        <infoPage soy-template="JIRA.Templates.ProjectTemplates.Pmx.renderPmxProjectTemplateExplanation" />
 
         <icon location="images/pmx-template-icon.png"/>
         <backgroundIcon location="images/pmx-template-background.png"/>
