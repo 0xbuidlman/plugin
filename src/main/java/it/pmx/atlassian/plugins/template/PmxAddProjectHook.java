@@ -1,10 +1,10 @@
 package it.pmx.atlassian.plugins.template;
 
-import com.atlassian.jira.blueprint.api.AddProjectHook;
-import com.atlassian.jira.blueprint.api.ConfigureData;
-import com.atlassian.jira.blueprint.api.ConfigureResponse;
-import com.atlassian.jira.blueprint.api.ValidateData;
-import com.atlassian.jira.blueprint.api.ValidateResponse;
+import com.atlassian.jira.project.template.hook.AddProjectHook;
+import com.atlassian.jira.project.template.hook.ConfigureData;
+import com.atlassian.jira.project.template.hook.ConfigureResponse;
+import com.atlassian.jira.project.template.hook.ValidateData;
+import com.atlassian.jira.project.template.hook.ValidateResponse;
 
 public class PmxAddProjectHook implements AddProjectHook
 {
@@ -12,7 +12,7 @@ public class PmxAddProjectHook implements AddProjectHook
     public ValidateResponse validate(final ValidateData validateData)
     {
         ValidateResponse validateResponse = ValidateResponse.create();
-        if (validateData.projectKey().equals("TEST"))
+        if (validateData.projectKey().equals("SKIL"))
         {
             validateResponse.addErrorMessage("Invalid Project Key");
         }
