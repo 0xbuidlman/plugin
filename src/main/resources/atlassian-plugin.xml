@@ -13,7 +13,6 @@
     
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="people-management-extensions-plugin"/>
-    <resource type="i18n" name="i18n-template" location="people-management-extensions-template"/>
     
     <!-- add our web resources -->
     <web-resource key="people-management-extensions-plugin-resources" name="people-management-extensions-plugin Web Resources">
@@ -42,6 +41,14 @@
         <context>atl.general</context>
         <context>atl.admin</context>
     </web-resource>
+    
+    <!-- Custom fields -->
+	<customfield-type name="Rating Custom Field" i18n-name-key="label.rating.custom.field.name" key="rating-custom-field" class="it.pmx.atlassian.plugins.field.RatingCustomField">
+		<description key="label.rating.custom.field.description">PMX Rating Custom Field Plugin</description>
+		<resource name="view" type="velocity" location="/view/field/rating/view.vm" />
+		<resource name="edit" type="velocity" location="/view/field/rating/edit.vm" />
+		<resource type="download" name="customfieldpreview.png" location="images/rating-customfield-preview.png"/>
+	</customfield-type>
 
     <project-blueprint key="people-management-extensions-template" weight="90">
         <label key="pmx.template.name"/>
@@ -49,7 +56,7 @@
         <description key="pmx.template.description"/>
         <longDescription key="pmx.template.description.long"/>
 
-        <infoPage soy-template="JIRA.Templates.ProjectTemplates.Pmx.renderPmxTemplateExplanation" />
+        <infoPage soy-template="JIRA.Templates.ProjectTemplates.Pmx.renderPmxProjectTemplateExplanation" />
 
         <icon location="images/pmx-template-icon.png"/>
         <backgroundIcon location="images/pmx-template-background.png"/>
