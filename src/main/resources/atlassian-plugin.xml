@@ -13,7 +13,6 @@
     
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="people-management-extensions-plugin"/>
-    <resource type="i18n" name="i18n-template" location="people-management-extensions-template"/>
     
     <!-- add our web resources -->
     <web-resource key="people-management-extensions-plugin-resources" name="people-management-extensions-plugin Web Resources">
