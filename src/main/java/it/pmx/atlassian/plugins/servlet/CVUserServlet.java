@@ -22,7 +22,7 @@ import com.atlassian.templaterenderer.TemplateRenderer;
 @Named("userCVServlet")
 public class CVUserServlet extends HttpServlet {
 
-	private static final String CV_PROFILE_VM_VIEW = "view/cv-profile.vm";
+	private static final String CV_PROFILE_VM_VIEW = "view/profile/cv-profile.vm";
 
 	/**
 	 * 
