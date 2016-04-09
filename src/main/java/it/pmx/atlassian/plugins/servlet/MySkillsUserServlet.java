@@ -22,7 +22,7 @@ import com.atlassian.templaterenderer.TemplateRenderer;
 @Named("userMySkillsServlet")
 public class MySkillsUserServlet extends HttpServlet {
 
-	private static final String MY_SKILLS_PROFILE_VM_VIEW = "view/my-skills-profile.vm";
+	private static final String MY_SKILLS_PROFILE_VM_VIEW = "view/profile/my-skills-profile.vm";
 
 	/**
 	 * 
