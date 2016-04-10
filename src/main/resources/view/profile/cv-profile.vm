@@ -2,6 +2,7 @@
 	<head>
     	<title>$i18n.getText('label.curriculum')</title>
     	<meta name="decorator" content="atl.general">
+    	${webResourceManager.requireResource("it.pmx.atlassian.plugins.people-management-extensions-plugin:people-management-extensions-plugin-resources")}
 	</head>
 	<body class="aui-layout aui-theme-default ">
 		<header class="aui-page-header">
