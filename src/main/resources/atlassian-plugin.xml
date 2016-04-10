@@ -1,165 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
-    <plugin-info>
-        <description>${project.description}</description>
-        <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/pluginIcon.png</param>
-        <param name="plugin-logo">images/pluginLogo.png</param>
-    </plugin-info>
-    
-    <component-import key="templateRenderer" interface="com.atlassian.templaterenderer.TemplateRenderer"/>
-	<component-import key="userManager" interface="com.atlassian.sal.api.user.UserManager"/>
-	<component-import key="loginUriProvider" interface="com.atlassian.sal.api.auth.LoginUriProvider"/>
-    
-    <!-- add our i18n resource -->
-    <resource type="i18n" name="i18n" location="people-management-extensions-plugin"/>
-    
-    <!-- add our web resources -->
-    <web-resource key="people-management-extensions-plugin-resources" name="people-management-extensions-plugin Web Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
-        <resource type="download" name="people-management-extensions-plugin.css" location="/css/people-management-extensions-plugin.css"/>
-        <resource type="download" name="people-management-extensions-plugin.js" location="/js/people-management-extensions-plugin.js"/>
-        <resource type="download" name="images/" location="/images"/>
-
-        <context>people-management-extensions-plugin</context>
-    </web-resource>
-    
-    <web-resource key="people-management-extensions-template-resources" name="people-management-extensions-template Web Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-
-        <transformation extension="soy">
-            <transformer key="soyTransformer"/>
-        </transformation>
-
-        <resource type="download" name="PmxTemplate.soy.js" location="/soy/PmxTemplate.soy"/>
-
-        <resource type="download" name="images/" location="/images">
-            <param name="content-type" value="image/png; charset=binary"/>
-        </resource>
-
-        <context>atl.general</context>
-        <context>atl.admin</context>
-    </web-resource>
-    
-    <!-- Custom fields -->
-	<customfield-type name="Rating Custom Field" i18n-name-key="label.rating.custom.field.name" key="rating-custom-field" class="it.pmx.atlassian.plugins.field.RatingCustomField">
-		<description key="label.rating.custom.field.description">PMX Rating Custom Field Plugin</description>
-		<resource name="view" type="velocity" location="/view/field/rating/view.vm" />
-		<resource name="edit" type="velocity" location="/view/field/rating/edit.vm" />
-		<resource type="download" name="customfieldpreview.png" location="images/rating-customfield-preview.png"/>
-	</customfield-type>
-
-    <project-blueprint key="people-management-extensions-template" weight="90">
-        <label key="pmx.template.name"/>
-		<projectTypeKey>business</projectTypeKey>
-        <description key="pmx.template.description"/>
-        <longDescription key="pmx.template.description.long"/>
-
-        <infoPage soy-template="JIRA.Templates.ProjectTemplates.Pmx.renderPmxProjectTemplateExplanation" />
-
-        <icon location="images/pmx-template-icon.png"/>
-        <backgroundIcon location="images/pmx-template-background.png"/>
-
-        <add-project>
-            <hook class="it.pmx.atlassian.plugins.template.PmxAddProjectHook"/>
-            <descriptor file="/config/pmx-project-template-config.json"/>
-        </add-project>
-    </project-blueprint>
-    
-    <web-section key="pmx_section" name="People Managament Main Section" location="pmx_links_link" weight="10"/>
-    
-    <web-item key="pmx_links" name="People Management Links Main Section" section="system.top.navigation.bar" weight="47">
-	    <label key="label.skills" />
-	    <conditions type="OR">
-	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition> 
-        </conditions>
-	    <link linkId="pmx_links_link">http://www.atlassian.com</link>
-	</web-item>
-	
-	<web-item key="skillcatalog_link" name="Catalog Page" section="pmx_links_link/pmx_section" weight="10">
-        <label key="label.skillcatalog" />
-       	<conditions type="OR">
-	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-        </conditions>
-        <link linkId="skillcatalog_link">/projects/SKILL/issues/?filter=allopenissues</link>
-    </web-item>
-
-	<web-item key="skillmatrix_link" name="Skill Matrix Page" section="pmx_links_link/pmx_section" weight="10">
-        <label key="label.skillmatrix" />
-        <conditions type="OR">
-	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-			<condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-        </conditions>
-        <link linkId="skillmatrix_link">http://www.atlassian.com</link>
-    </web-item>
-
-	<web-item key="credentials_link" name="Credential Page" section="pmx_links_link/pmx_section" weight="10">
-        <label key="label.credentials" />
-        <conditions type="OR">
-	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-        	<condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-        </conditions>
-        <link linkId="catalog_link">/projects/SKILL/issues/?filter=allopenissues</link>
-    </web-item>
-
-	<web-item key="cv_link" name="CV Page" section="pmx_links_link/pmx_section" weight="10">
-        <label key="label.cv" />
-        <conditions type="OR">
-	        <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-			<condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
-			    <param name="permission">admin</param>
-			</condition>
-        </conditions>
-        <link linkId="cv_link">http://www.atlassian.com</link>
-    </web-item>
-    
-    <!-- User Menu Section -->
-    <web-section key="pmx_user_dropdown_section" name="People Managament User Dropdown Main Section" location="system.user.options" weight="101"/>
-    
-    <web-item key="pmx_user_cv_link" name="CV Page Link" section="system.user.options/pmx_user_dropdown_section" weight="1">
-        <label key="label.cv" />
-        <link linkId="pmx_user_cv_link">/plugins/servlet/user-cv</link>
-        <tooltip key="tooltip.cv" />
-    </web-item>
-
-    <web-item key="pmx_user_my_skills_link" name="My Skills Page Link" section="system.user.options/pmx_user_dropdown_section" weight="2">
-        <label key="label.myskills" />
-        <link linkId="pmx_user_my_skills_link">/plugins/servlet/user-my-skills</link>
-    </web-item>
-    
-    <web-panel key="pmx_user_cv_prefs" location="webpanels.user.profile.summary.custom" weight="150">
-	    <resource name="view" type="velocity" location="view/profile/cv-preferences-profile.vm"/>
-	</web-panel>
-	
-	<servlet name="CV User Servlet" key="cv_user_servlet" class="it.pmx.atlassian.plugins.servlet.CVUserServlet">
-        <description>CV User Servlet.</description>
-        <url-pattern>/user-cv</url-pattern>
-    </servlet>
-
-	<servlet name="My Skills User Servlet" key="my_skills_user_servlet" class="it.pmx.atlassian.plugins.servlet.MySkillsUserServlet">
-        <description>My Skills User Servlet.</description>
-        <url-pattern>/user-my-skills</url-pattern>
-    </servlet>
-    
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+  <component-import key="templateRenderer" interface="com.atlassian.templaterenderer.TemplateRenderer"/>
+  <component-import key="userManager" interface="com.atlassian.sal.api.user.UserManager"/>
+  <component-import key="loginUriProvider" interface="com.atlassian.sal.api.auth.LoginUriProvider"/>
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="people-management-extensions-plugin"/>
+  <!-- add our web resources -->
+  <web-resource key="people-management-extensions-plugin-resources" name="people-management-extensions-plugin Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <resource type="download" name="people-management-extensions-plugin.css" location="/css/people-management-extensions-plugin.css"/>
+    <resource type="download" name="people-management-extensions-plugin.js" location="/js/people-management-extensions-plugin.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <context>people-management-extensions-plugin</context>
+  </web-resource>
+  <web-resource key="people-management-extensions-template-resources" name="people-management-extensions-template Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <transformation extension="soy">
+      <transformer key="soyTransformer"/>
+    </transformation>
+    <resource type="download" name="PmxTemplate.soy.js" location="/soy/PmxTemplate.soy"/>
+    <resource type="download" name="images/" location="/images">
+      <param name="content-type" value="image/png; charset=binary"/>
+    </resource>
+    <context>atl.general</context>
+    <context>atl.admin</context>
+  </web-resource>
+  <!-- Custom fields -->
+  <customfield-type name="Rating Custom Field" i18n-name-key="label.rating.custom.field.name" key="rating-custom-field" class="it.pmx.atlassian.plugins.field.RatingCustomField">
+    <description key="label.rating.custom.field.description">PMX Rating Custom Field Plugin</description>
+    <resource name="view" type="velocity" location="/view/field/rating/view.vm"/>
+    <resource name="edit" type="velocity" location="/view/field/rating/edit.vm"/>
+    <resource type="download" name="customfieldpreview.png" location="images/rating-customfield-preview.png"/>
+  </customfield-type>
+  <project-blueprint key="people-management-extensions-template" weight="90">
+    <label key="pmx.template.name"/>
+    <projectTypeKey>business</projectTypeKey>
+    <description key="pmx.template.description"/>
+    <longDescription key="pmx.template.description.long"/>
+    <infoPage soy-template="JIRA.Templates.ProjectTemplates.Pmx.renderPmxProjectTemplateExplanation"/>
+    <icon location="images/pmx-template-icon.png"/>
+    <backgroundIcon location="images/pmx-template-background.png"/>
+    <add-project>
+      <hook class="it.pmx.atlassian.plugins.template.PmxAddProjectHook"/>
+      <descriptor file="/config/pmx-project-template-config.json"/>
+    </add-project>
+  </project-blueprint>
+  <web-section key="pmx_section" name="People Managament Main Section" location="pmx_links_link" weight="10"/>
+  <web-item key="pmx_links" name="People Management Links Main Section" section="system.top.navigation.bar" weight="47">
+    <label key="label.skills"/>
+    <conditions type="OR">
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+    </conditions>
+    <link linkId="pmx_links_link">http://www.atlassian.com</link>
+  </web-item>
+  <web-item key="skillcatalog_link" name="Catalog Page" section="pmx_links_link/pmx_section" weight="10">
+    <label key="label.skillcatalog"/>
+    <conditions type="OR">
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+    </conditions>
+    <link linkId="skillcatalog_link">/projects/SKILL/issues/?filter=allopenissues</link>
+  </web-item>
+  <web-item key="skillmatrix_link" name="Skill Matrix Page" section="pmx_links_link/pmx_section" weight="10">
+    <label key="label.skillmatrix"/>
+    <conditions type="OR">
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+    </conditions>
+    <link linkId="skillmatrix_link">http://www.atlassian.com</link>
+  </web-item>
+  <web-item key="credentials_link" name="Credential Page" section="pmx_links_link/pmx_section" weight="10">
+    <label key="label.credentials"/>
+    <conditions type="OR">
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+    </conditions>
+    <link linkId="catalog_link">/projects/SKILL/issues/?filter=allopenissues</link>
+  </web-item>
+  <web-item key="cv_link" name="CV Page" section="pmx_links_link/pmx_section" weight="10">
+    <label key="label.cv"/>
+    <conditions type="OR">
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+      <condition class="com.atlassian.jira.plugin.webfragment.conditions.JiraGlobalPermissionCondition">
+        <param name="permission">admin</param>
+      </condition>
+    </conditions>
+    <link linkId="cv_link">http://www.atlassian.com</link>
+  </web-item>
+  <!-- User Menu Section -->
+  <web-section key="pmx_user_dropdown_section" name="People Managament User Dropdown Main Section" location="system.user.options" weight="101"/>
+  <web-item key="pmx_user_cv_link" name="CV Page Link" section="system.user.options/pmx_user_dropdown_section" weight="1">
+    <label key="label.cv"/>
+    <link linkId="pmx_user_cv_link">/plugins/servlet/user-cv</link>
+    <tooltip key="tooltip.cv"/>
+  </web-item>
+  <web-item key="pmx_user_my_skills_link" name="My Skills Page Link" section="system.user.options/pmx_user_dropdown_section" weight="2">
+    <label key="label.myskills"/>
+    <link linkId="pmx_user_my_skills_link">/plugins/servlet/user-my-skills</link>
+  </web-item>
+  <web-panel key="pmx_user_cv_prefs" location="webpanels.user.profile.summary.custom" weight="150">
+    <resource name="view" type="velocity" location="view/profile/cv-preferences-profile.vm"/>
+  </web-panel>
+  <servlet name="CV User Servlet" key="cv_user_servlet" class="it.pmx.atlassian.plugins.servlet.CVUserServlet">
+    <description>CV User Servlet.</description>
+    <url-pattern>/user-cv</url-pattern>
+  </servlet>
+  <servlet name="My Skills User Servlet" key="my_skills_user_servlet" class="it.pmx.atlassian.plugins.servlet.MySkillsUserServlet">
+    <description>My Skills User Servlet.</description>
+    <url-pattern>/user-my-skills</url-pattern>
+  </servlet>
+  <customfield-type name="Users Possess Skill" i18n-name-key="users-possess-skill.name" key="users-possess-skill" class="it.pmx.atlassian.plugins.field.UsersPossessSkill">
+    <description key="users-possess-skill.description">The Users Possess Skill Plugin</description>
+    <resource name="view" type="velocity" location="/templates/customfields/users-possess-skill/view.vm"/>
+    <resource name="edit" type="velocity" location="/templates/customfields/users-possess-skill/edit.vm"/>
+  </customfield-type>
+  <customfield-type name="Users Have To Obtain Skill" i18n-name-key="users-have-to-obtain-skill.name" key="users-have-to-obtain-skill" class="it.pmx.atlassian.plugins.field.UsersHaveToObtainSkill">
+    <description key="users-have-to-obtain-skill.description">The Users Have To Obtain Skill Plugin</description>
+    <resource name="view" type="velocity" location="/templates/customfields/users-have-to-obtain-skill/view.vm"/>
+    <resource name="edit" type="velocity" location="/templates/customfields/users-have-to-obtain-skill/edit.vm"/>
+  </customfield-type>
+  <customfield-type name="Users Have To Improve Skill" i18n-name-key="users-have-to-improve-skill.name" key="users-have-to-improve-skill" class="it.pmx.atlassian.plugins.field.UsersHaveToImproveSkill">
+    <description key="users-have-to-improve-skill.description">The Users Have To Improve Skill Plugin</description>
+    <resource name="view" type="velocity" location="/templates/customfields/users-have-to-improve-skill/view.vm"/>
+    <resource name="edit" type="velocity" location="/templates/customfields/users-have-to-improve-skill/edit.vm"/>
+  </customfield-type>
 </atlassian-plugin>
