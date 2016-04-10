@@ -1,30 +1,27 @@
 package it.pmx.atlassian.plugins.template;
 
-import com.atlassian.jira.blueprint.api.AddProjectHook;
-import com.atlassian.jira.blueprint.api.ConfigureData;
-import com.atlassian.jira.blueprint.api.ConfigureResponse;
-import com.atlassian.jira.blueprint.api.ValidateData;
-import com.atlassian.jira.blueprint.api.ValidateResponse;
+import com.atlassian.jira.project.template.hook.AddProjectHook;
+import com.atlassian.jira.project.template.hook.ConfigureData;
+import com.atlassian.jira.project.template.hook.ConfigureResponse;
+import com.atlassian.jira.project.template.hook.ValidateData;
+import com.atlassian.jira.project.template.hook.ValidateResponse;
 
-public class PmxAddProjectHook implements AddProjectHook
-{
-    @Override
-    public ValidateResponse validate(final ValidateData validateData)
-    {
-        ValidateResponse validateResponse = ValidateResponse.create();
-        if (validateData.projectKey().equals("TEST"))
-        {
-            validateResponse.addErrorMessage("Invalid Project Key");
-        }
+public class PmxAddProjectHook implements AddProjectHook {
 
-        return validateResponse;
-    }
+	@Override
+	public ValidateResponse validate(final ValidateData validateData) {
+		ValidateResponse validateResponse = ValidateResponse.create();
+		if (validateData.projectKey().equals("SKILL")) {
+			validateResponse.addErrorMessage("Invalid Project Key");
+		}
 
-    @Override
-    public ConfigureResponse configure(final ConfigureData configureData)
-    {
-        ConfigureResponse configureResponse = ConfigureResponse.create().setRedirect("/issues/");
+		return validateResponse;
+	}
 
-        return configureResponse;
-    }
+	@Override
+	public ConfigureResponse configure(final ConfigureData configureData) {
+		ConfigureResponse configureResponse = ConfigureResponse.create().setRedirect("/issues/");
+
+		return configureResponse;
+	}
 }
