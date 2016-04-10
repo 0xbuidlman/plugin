@@ -1,36 +1,61 @@
 <html>
 	<head>
-    	<title>$i18n.getText('label.cv')</title>
+    	<title>$i18n.getText('label.curriculum')</title>
     	<meta name="decorator" content="atl.general">
 	</head>
-	<body>
-		<div class="aui-page-header">
+	<body class="aui-layout aui-theme-default ">
+		<header class="aui-page-header">
 			<div class="aui-page-header-inner">
 				<div class="aui-page-header-main">
 					<h1>$i18n.getText('label.curriculum')</h1>
 				</div>
 			<div id="dash-options" class="aui-page-header-actions">
 			</div>
-		</div>
-	    <form id="cv_profile_form">
-			<div>
-	    		<ul class="item-details">
-					<li>
-					    <dl title="$i18n.getText('label.num.project')">
-							<dt>$i18n.getText('label.num.project'):</dt>
-							<dd>
-					   	 		<span id="up-p-pagesize">TODO</span>
-						    </dd>
-						</dl>
-						<dl title="$i18n.getText('label.num.project')">
-							<dt>$i18n.getText('label.num.project'):</dt>
-							<dd>
-						    	<span id="up-p-pagesize">TODO</span>
-					       	</dd>
-					    </dl>
-					</li>
-				</ul>
+		</header>
+		<div class="aui-page-panel"> 
+		    <div class="aui-page-panel-inner">
+			    <section id="cv_profile_form" class="aui-page-panel-content">
+			    	<div id="summary-module" class="module">
+						<div class="mod-header">
+							<ul class="ops">
+						        <li>
+						        	<a id="edit_prefs_lnk" class="icon icon-edit-sml" href="/jira/plugins/servlet/user-cv?username=${urlcodec.encode($user.name)}" title="$i18n.getText('label.edit.summary')">
+						        		<span>$i18n.getText('label.edit.summary')</span>
+					        		</a>
+				        		</li>
+						    </ul>
+						    <h3>$i18n.getText('label.summary')</h3>
+						</div>
+						<div class="mod-content">
+							<ul class="item-details">
+						        <li>
+						            <dl title="$i18n.getText('label.description')">
+						                <dt>$i18n.getText('label.description'):</dt>
+						                <dd>
+						                    <span id="up-p-pagesize">Frontend developer with an attitude fo UX Design</span>
+						                </dd>
+						            </dl>
+						        </li>
+						    </ul>
+						</div>
+					</div>
+					<div id="credentials-module" class="module">
+						<div class="mod-header">
+							<ul class="ops">
+						        <li>
+						        	<a id="edit_prefs_lnk" class="icon icon-edit-sml" href="" title="$i18n.getText('label.edit.credentials')">
+						        		<span>$i18n.getText('label.edit.credentials')</span>
+					        		</a>
+				        		</li>
+						    </ul>
+						    <h3>$i18n.getText('label.credentials')</h3>
+						</div>
+						<div class="mod-content">
+							TODO
+						</div>
+					</div>
+				</section>
 			</div>
-		</form>
+		</div>
 	</body>
 </html>
