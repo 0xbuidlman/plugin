@@ -29,6 +29,12 @@
 		<!-- This is not normally recommended, but may be required eg when migrating 
 			a plugin originally developed against JIRA 4.x -->
 		<dependency>
+			<groupId>com.atlassian.jira</groupId>
+			<artifactId>jira-core</artifactId>
+			<version>${jira.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
