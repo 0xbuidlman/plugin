@@ -54,6 +54,21 @@
 							TODO
 						</div>
 					</div>
+					<div id="skills-module" class="module">
+						<div class="mod-header">
+							<ul class="ops">
+						        <li>
+						        	<a id="edit_prefs_lnk" class="icon icon-edit-sml" href="" title="$i18n.getText('label.edit.skills')">
+						        		<span>$i18n.getText('label.edit.skills')</span>
+					        		</a>
+				        		</li>
+						    </ul>
+						    <h3>$i18n.getText('label.skills')</h3>
+						</div>
+						<div class="mod-content">
+							TODO
+						</div>
+					</div>
 				</section>
 			</div>
 		</div>
